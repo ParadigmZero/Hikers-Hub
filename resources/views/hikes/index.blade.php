@@ -1,11 +1,4 @@
-@extends('layouts.main')
-
-@section('title')
-    Hikes index page
-@endsection
-
-@section('content')
-    <h1>
+<h1>
         All hikes
     </h1>
     <br/>
@@ -30,11 +23,14 @@
                 </tr>
             </tbody>
         </table>
-
+        <br/>
     </a>
+    <button onclick="myFunction()">Delete</button>
         <br/>
         <br/>
         <br/>
         @endfor
     </p>
-@endsection
+
+
+

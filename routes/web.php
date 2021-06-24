@@ -22,6 +22,11 @@ Route::get('/hikes', [HikeController::class, 'index']);
 // Get a single hike by an id
 Route::get('/hikes/{id}/{slug?}', [HikeController::class, 'show']);
 
+// Get a single hike by an id
+Route::delete('/hikes/{id}', [HikeController::class, 'delete']);
+
+
+
 // root just goes to hikes for now
 Route::redirect('/', '/hikes');
 
