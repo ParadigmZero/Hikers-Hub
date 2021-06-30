@@ -7,52 +7,79 @@ use Illuminate\Http\Request;
 
 class HikeController extends Controller
 {
-    // Show all
+    // Show all , (GET all)
     public function index()
     {
         // return all the hikes and pass them to the view "index"
+        $hikes = Hike::all();
+
 
         // if there are hikes, return the page of all the hikes else go to create new hike page
-        if (sizeof(Hike::all()) > 0) {
+        if ($hikes->count()) {
             // Get all
-            return view('hikes/index', ['hikes' => Hike::all()]);
+            return view('hikes/index', compact('hikes'));
         } else {
             return view('hikes/create');
         }
     }
 
-    public function show($hike, $slug = null)
+    // GET (single) ( RETRIEVE)
+    public function show(Hike $hike, $slug = null)
     {
+        return view('hikes/show', compact('hike'));
 
-
-        // lookup hike using the id - done
-
-        // work out out to pass the model to the view, to display the props of the hike- done
-        // needs to be in array since it could be multiple items?
-        return view('hikes/show', ['hike' => Hike::where('id', $hike)->get()]);
-
-        // ext - auto-lookup,
-
+        // the below does the same?
+        //return view('hikes/show', [Hike::find($hike)]);
+        // perhaps redirect if there is no such hike
     }
 
-    // Page to create a new hike
     public function create()
     {
-        return view('hikes/show', ['hike' => Hike::where('id', $hike)->get()]);
+        return view('hikes/create');
     }
 
-    public function delete($id)
+    // Page to create a new hike ( INSERT )
+    public function store(Request $request)
     {
-        // delete the item
-        Hike::table('hikes')->where('id', '=', $id)->delete();
 
-        // redirect back to the main page
-        return redirect('hikes/index');
+        // extract and validate the input
+        $params = $request->validate([
+            'title' => 'required|min:3|max:50',
+            'description' => 'required|min:5'
+        ]);
+
+        // here if validation succeeds!
+        // create a model
+        $hike = Hike::create($params);
+
+        // return an approp resp - redirect to index?
+        return redirect()->route('hikes.index');
     }
 
-    public function update($id)
+    // ( DELETE / DESTROY)
+    public function destroy(Hike $hike)
     {
+        // delete the hike from the database
+        $hike->delete();
+
+        return redirect()->route('hikes.index');
+    }
+
+    // ( UPDATE )
+    public function update($hike)
+    {
+        Hike::where('id', $hike['id'])->update([
+            'title' => $hike['title'],
+            'description' => $hike['description']
+        ]);
+
         // update the hike
+        // Hike::table('hikes')
+        //     ->where('id', $hike['id'])
+        //     ->update([
+        //         'title' => $hike['title'],
+        //         'description' => $hike['description']
+        //     ]);
 
         // navigate back to the index
         return redirect('hikes/index');

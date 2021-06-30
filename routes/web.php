@@ -16,20 +16,35 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 // Get all hikes
-Route::get('/hikes', [HikeController::class, 'index']);
+// Route::get('/hikes', [HikeController::class, 'index'])->name('hikes.index');
 
-// Get a single hike by an id
-Route::get('/hikes/{id}/{slug?}', [HikeController::class, 'show']);
+// Route::get('/hikes/create', [HikeController::class, 'create'])->name('hikes.create');
 
-// Get a single hike by an id
-Route::delete('/hikes/{id}', [HikeController::class, 'delete']);
+// Route::post('/hikes', [HikeController::class, 'store'])->name('hikes.store');
+
+// // Get a single hike by an id
+// Route::get('/admin/hikes/{hike}/{slug?}', [HikeController::class, 'show'])->name('hikes.show');
+
+// // aim is to delete
+// // Get a single hike by an id
+// Route::delete('/hikes/{hike}', [HikeController::class, 'delete'])->name('hike.delete');
+
+Route::resource('hikes', HikeController::class);
 
 
+
+
+// update
+
+// PUT ( full modification )
+Route::put('/hikes/{id}', [HikeController::class, 'update']);
 
 // root just goes to hikes for now
 Route::redirect('/', '/hikes');
 
+// form and method spoofing.
 
 
 // RESTful of routes to be able to explore the range of hike

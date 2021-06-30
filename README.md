@@ -1,3 +1,5 @@
 # Running the application
 
-php artisan serve
+Launch XAMPP or equivalent and start MySQL.
+
+`php artisan serve`
