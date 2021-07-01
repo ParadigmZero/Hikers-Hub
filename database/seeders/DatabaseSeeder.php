@@ -13,6 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $people = [
+            [
+                'name' => 'Nathan'
+            ],
+            [
+                'name' => 'Sean'
+            ]
+        ]
+
+
         // \App\Models\User::factory(10)->create();
         $this->call(HikeSeeder::class);
     }

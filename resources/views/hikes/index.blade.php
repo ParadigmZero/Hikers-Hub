@@ -20,11 +20,12 @@
     <br/>
     <p>
 
-
+        {{-- for each hike in hikes --}}
         @foreach ($hikes as $hike)
 
-
-            <a href="{{ $hike->getUrl() }}">
+            {{-- what is get url really doing? --}}
+            {{-- <a href="{{ $hike->getUrl() }}"> --}}
+                <a href="{{ route('hikes.edit', $hike->id) }}">
 
                 <table >
                     <tbody>

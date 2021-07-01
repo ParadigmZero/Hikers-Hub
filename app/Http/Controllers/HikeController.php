@@ -33,6 +33,16 @@ class HikeController extends Controller
         // perhaps redirect if there is no such hike
     }
 
+    // show edit
+    public function edit(Hike $hike, $slug = null)
+    {
+        return view('hikes/show', compact('hike'));
+
+        // the below does the same?
+        //return view('hikes/show', [Hike::find($hike)]);
+        // perhaps redirect if there is no such hike
+    }
+
     public function create()
     {
         return view('hikes/create');

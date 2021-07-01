@@ -1,4 +1,7 @@
 <html>
+    <h1>
+        Edit Hike
+    </h1>
     <body>
 
         @if ($hike)
