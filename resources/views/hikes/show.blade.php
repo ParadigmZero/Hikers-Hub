@@ -1,3 +1,5 @@
+{{-- Show ( GET standard ) is no longer used. Now we only use GET EDIT --}}
+
 <html>
     <body>
 
@@ -10,11 +12,11 @@
                     </tr>
                     <tr>
                         <td>title</td>
-                        <td><input type="text" value={{ $hike->title }}></td>
+                        <td><input type="text" name="title" value={{ $hike->title }}></td>
                     </tr>
                     <tr>
                         <td>description</td>
-                        <td><input type="text" value={{ $hike->description }}>
+                        <td><input type="text" name="description" value={{ $hike->description }}>
                             </td>
                     </tr>
                 </tbody>
@@ -33,15 +35,15 @@
     <script>
 
 
+// Sample of how an Axios could look
+        // axios.post('/???', {
+        //     title: 'my new hike',
 
-        axios.post('/???', {
-            title: 'my new hike',
+        // }, function () {
 
-        }, function () {
-
-        }).then(function () {
-            //
-        })
+        // }).then(function () {
+        //     //
+        // })
 
     </script>
     </body>

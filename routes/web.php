@@ -39,7 +39,7 @@ Route::resource('hikes', HikeController::class);
 // update
 
 // PUT ( full modification )
-Route::put('/hikes/{id}', [HikeController::class, 'update']);
+// Route::put('/hikes/{id}', [HikeController::class, 'update']);
 
 // root just goes to hikes for now
 Route::redirect('/', '/hikes');

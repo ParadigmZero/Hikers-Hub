@@ -27,6 +27,10 @@
 
             <button>Create</button>
 
+            <br/><br/>
+
+            <a href="{{ route('hikes.index') }}">Back</a>
+
         </form>
 
     </body>
